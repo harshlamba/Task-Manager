@@ -1,0 +1,14 @@
+<div class="container">
+    <form role="form">
+        <span ng-bind="model.id" />
+        <div class="form-group">
+            <label>Enter Title</label>
+            <input class="form-control" id="txtTitle" type="text" ng-model="child.title" /><br />
+        </div>
+        <div class="form-group">
+            <label>Enter Description</label>
+            <input class="form-control" id="txtDesc" type="text" ng-model="child.description" /><br />
+        </div>
+        <button class="btn btn-primary" type="submit" ng-click="createChildTask(model.id, child)">Submit</button>
+    </form>
+</div>

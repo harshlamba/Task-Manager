@@ -1,0 +1,18 @@
+﻿<div class="container">
+    <form role="form">
+        <span ng-bind="model.id" />
+        <div class="form-group">
+            <label>Select Start Date</label>
+            <input class="form-control" type="date" ng-model="schedule.start" /><br />
+        </div>
+        <div class="form-group">
+            <label>Select End Date</label>
+            <input class="form-control" type="date" ng-model="schedule.end" /><br />
+        </div>
+        <div class="form-group">
+            <label>Select Reminder Date</label>
+            <input class="form-control" type="date" ng-model="schedule.reminder" /><br />
+        </div>
+        <button class="btn btn-primary" type="submit" ng-click="scheduleTask(model.id, schedule)">Submit</button>
+    </form>
+</div>

@@ -1,0 +1,1 @@
+﻿angular.module('taskManager.dashboard', ['firebase']);

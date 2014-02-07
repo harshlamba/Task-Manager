@@ -1,0 +1,46 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <h1>Task List</h1>
+            <div>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <td>Title </td>
+                        <td>Description</td>
+                        <td>Edit</td>
+                        <td>Schedule</td>
+                    </tr>
+                    <tr ng-repeat="task in taskList" ng-if="task.start=='0'">
+                        <td ng-bind="task.title"></td>
+                        <td ng-bind="task.description"></td>
+                        <td><a ng-href="#/edit-task/{{task.id}}">Edit {{task.title}}</a></td>
+                        <td><a ng-href="#/schedule-task/{{task.id}}">Schedule {{task.title}}</a></td>                        
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <h1>Organized Task list</h1>
+            <div>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <td>Title </td>
+                        <td>Description</td>
+                        <td>Edit</td>
+                        <td>Change Schedule</td>
+                    </tr>
+                    <tr ng-repeat="task in taskList" ng-if="task.start!='0'">
+                        <td ng-bind="task.title"></td>
+                        <td ng-bind="task.description"></td>
+                        <td><a ng-href="#/edit-task/{{task.id}}">Edit {{task.title}}</a></td>
+                        <td><a ng-href="#/schedule-task/{{task.id}}">Change Schedule {{task.title}}</a></td>
+                        <td><a ng-href="#/createChild-task/{{task.id}}">Create Child Tasks {{task.title}}</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
