@@ -1,0 +1,23 @@
+﻿<div class="container" ng-init="onToDoLoad()">
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <h1>My Today ToDo</h1>
+            <div>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <td>Title </td>
+                        <td>Description</td>
+                    </tr>
+
+                    <tr ng-repeat="task in todoList">
+                        <td ng-bind="task.title"></td>
+                        <td ng-bind="task.description"></td>
+                        <td>{{task.start}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>

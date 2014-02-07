@@ -58,5 +58,11 @@ config(['$routeProvider', function ($routeProvider) {
                 return MindmapperService.getTask($route.current.params.taskId);
             }
         }
+    }).
+    when('/today-todo', {
+        templateUrl: 'app/partials/myTodayToDo.html', controller: 'ToDoController'
+    }).
+    otherwise({
+        redirectTo: '/list-task'
     });
 }]);

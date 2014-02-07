@@ -50,6 +50,7 @@ angular.module('taskManager.dashboard').factory('MindmapperService', ['$firebase
             // var item = $firebase(childTaskRef);
             // return item;
             //return totalTaskList[taskId];
+            debugger;
             var t = totalTaskList[taskId];
             return t;
         }
