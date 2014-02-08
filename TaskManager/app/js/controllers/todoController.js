@@ -1,7 +1,8 @@
 ﻿angular.module('taskManager.dashboard').
-        controller('ToDoController', ['$scope', 'TodoService', function ($scope, TodoService) {
-             //debugger;          
-            $scope.onToDoLoad = function () {
-             $scope.todoList = TodoService.getTodoList();
-            }
+        controller('ToDoController', ['$scope', 'MindmapperService', function ($scope, MindmapperService) {
+            debugger;
+
+            $scope.todoList = MindmapperService.getTodayTask();
+
         }]);
+

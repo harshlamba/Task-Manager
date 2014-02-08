@@ -1,0 +1,27 @@
+//
+// Header
+// --------------------------------------------------
+
+@import "@{bootstrap-dir}/navbar";
+
+header {
+	 nav {
+	 	&:extend(.navbar);
+	 	&:extend(.navbar-inverse all);
+	 	&:extend(.navbar-fixed-top);
+
+	 	.nav-header {
+
+	 		&:extend(.navbar-header);
+
+		 	> .brand { 
+		 		&:extend(.navbar-inverse .navbar-brand all); 
+		 		&:extend(.navbar-brand all);
+		 	}
+
+			> button { &:extend(.navbar-toggle); }
+
+	 	}
+
+	}
+}

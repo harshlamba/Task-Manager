@@ -60,7 +60,12 @@ config(['$routeProvider', function ($routeProvider) {
         }
     }).
     when('/today-todo', {
-        templateUrl: 'app/partials/myTodayToDo.html', controller: 'ToDoController'
+        templateUrl: 'app/partials/myTodayToDo.html', controller: 'ToDoController', resolve: {
+            todoList: function (MindmapperService) {
+                var todoList = MindmapperService.getTodayTask();
+                return todoList;
+            }
+        }
     }).
     otherwise({
         redirectTo: '/list-task'

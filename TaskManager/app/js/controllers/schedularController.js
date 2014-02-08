@@ -1,4 +1,8 @@
 ﻿angular.module('taskManager.dashboard').
-    controller('todoController', ['$scope', 'MindmapperService', 'taskList', function ($scope, MindmapperService, taskList) {
-        $scope.taskList = taskList;
-    }]);
+        controller('SchedularController', ['$scope', 'ScheduleService', 'task', function ($scope, ScheduleService, task) {
+            // debugger;
+            $scope.model = task;
+            $scope.scheduleTask = function (id, schedule) {
+                ScheduleService.scheduleTask(id, schedule);
+            }
+        }]);

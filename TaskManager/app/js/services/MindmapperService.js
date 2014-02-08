@@ -7,15 +7,28 @@ angular.module('taskManager.dashboard').factory('MindmapperService', ['$firebase
     var tasksRef = new Firebase(firebaseDataUrl);
     var totalTaskList = null;
     totalTaskList = $firebase(tasksRef);
+    var todayTask = [];
+
     tasksRef.on('child_added', function (snapshot) {
-        // debugger;
+        
         if (null != snapshot) {
             var msgData = snapshot.val();
-            msgData.id = snapshot.name();
+            //msgData.id = snapshot.name();
+           // debugger;
+            if (msgData.start != undefined) {
+                var todayDate = new Date();
+                if ((Date.parse( msgData.start) <= todayDate) && (Date.parse(msgData.end) >= todayDate)) {
+                    todayTask.push(msgData);
+                }
+            }
         }
     });
 
     return {
+
+        getTodayTask: function() {
+            return todayTask;
+        },
 
         getAllTask: function () {
 
@@ -50,7 +63,7 @@ angular.module('taskManager.dashboard').factory('MindmapperService', ['$firebase
             // var item = $firebase(childTaskRef);
             // return item;
             //return totalTaskList[taskId];
-            debugger;
+           // debugger;
             var t = totalTaskList[taskId];
             return t;
         }

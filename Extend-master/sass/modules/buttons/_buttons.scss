@@ -1,0 +1,9 @@
+//
+// Buttons
+// --------------------------------------------------
+
+@import "../../../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/buttons";
+
+button {
+	@extend .btn;
+}

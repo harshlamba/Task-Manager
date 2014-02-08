@@ -1,0 +1,9 @@
+{
+  "name": "Extend",
+  "dependencies": {
+    "bootstrap": "~3.1.0",
+    "bootstrap-sass": "git://github.com/twbs/bootstrap-sass.git",
+    "foundation": "zurb/bower-foundation",
+    "normalize-css": "~3.0.0"
+  }
+}

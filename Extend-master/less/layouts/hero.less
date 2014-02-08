@@ -1,0 +1,14 @@
+//
+// Header
+// --------------------------------------------------
+
+@import (reference) "@{bootstrap-dir}/buttons";
+@import (reference) "@{bootstrap-dir}/jumbotron";
+@import (reference) "@{bootstrap-dir}/utilities";
+
+
+#hero:extend(.jumbotron all) {
+	button {
+		&:extend(.btn all, .btn-primary all, .btn-lg);
+	}
+}

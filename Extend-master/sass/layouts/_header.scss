@@ -1,0 +1,62 @@
+//
+// Header
+// --------------------------------------------------
+
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/navbar";
+
+header {
+
+	@include grid-container();
+	background-color: $navbar-inverse-bg;
+  	border-color: $navbar-inverse-border;
+
+	> nav {
+	 	@extend .navbar;
+	 	@extend .navbar-inverse;
+	 	margin-bottom: 0;
+
+		@include grid-cell(16, 6, 10);
+
+	 	> .brand { 
+	 		@extend .navbar-brand;
+	 		padding: $navbar-padding-vertical 0; 
+	 	}
+
+		> button { 
+			@extend .navbar-toggle; 
+			> icon {
+				color: $navbar-inverse-toggle-icon-bar-bg;
+				font-size: 2rem;
+			}
+		}
+
+	}
+
+	> form {
+
+		@include grid-container();
+		@include grid-cell(16, 10, 6);
+		@include grid-align(center);
+
+		@media (max-width: $screen-sm-min) {
+			padding: 15px;
+		}
+
+		> input {
+			@include grid-cell(16, 5.9, 6.4);
+			@extend .form-control;
+			@media (min-width: $screen-sm-min) {
+				margin-right: percentage(0.1/$columns);
+			}
+			@media (max-width: $screen-sm-min) {
+				margin-bottom: 5px;
+			}
+		}
+
+		> button {
+			@include grid-cell(16, 4, 3);
+			@extend .btn;
+			@extend .btn-success;
+		}
+	}
+}

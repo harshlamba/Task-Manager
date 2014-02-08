@@ -1,0 +1,17 @@
+//
+// Hero
+// --------------------------------------------------
+
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/jumbotron";
+
+.hero {
+	
+	@extend .jumbotron;
+	@include grid-cell(16);
+
+		button {
+			@extend .btn;
+			@extend .btn-primary;
+			@extend .btn-lg;
+		}
+}

@@ -1,4 +1,4 @@
-﻿<div class="container" ng-init="onToDoLoad()">
+﻿<div class="container" >
     <div class="row">
         <div class="col-lg-2"></div>
         <div class="col-lg-8">
@@ -8,12 +8,15 @@
                     <tr>
                         <td>Title </td>
                         <td>Description</td>
+                        <td>Start Date</td>
+                        <td>End Date</td>
                     </tr>
 
                     <tr ng-repeat="task in todoList">
                         <td ng-bind="task.title"></td>
                         <td ng-bind="task.description"></td>
-                        <td>{{task.start}}</td>
+                        <td ng-bind="task.start"></td>
+                        <td ng-bind="task.end"></td>
                     </tr>
                 </table>
             </div>
