@@ -1,0 +1,12 @@
+﻿<div class="container-fluid">
+    <form role="form">
+        <h3>Creating task category</h3>
+        <div class="form-group">
+            <input class="form-control" id="txtCategory" type="text" placeholder="Enter name" ng-model="category.title" blur="submitToggle" /><br />
+        </div>
+        <div class="form-group">
+            <input class="form-control" id="txtDescription" type="text" placeholder="Enter description" ng-model="category.description" blur="submitToggle" /><br />
+        </div>
+        <button class="btn btn-primary" type="submit" ng-click="createCategory(category)">Create Category</button>
+    </form>
+</div>

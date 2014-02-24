@@ -1,73 +1,83 @@
-'use strict';
+﻿/// <reference path="../lib/angular/angular.min.js" />
+'use strict'
 
-
-// Declare app level module which depends on filters, and services
-/* angular.module('myApp', [
-  'ngRoute',
-  'myApp.filters',
-  'myApp.services',
-  'myApp.directives',
-  'myApp.controllers'
-]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
-  $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
-  $routeProvider.otherwise({redirectTo: '/view1'});
-}]); */
 
 angular.module('taskManager', [
     'ngRoute',
-    'taskManager.dashboard',
-    'ui.bootstrap'
-    //'ui-templates'
+    'taskManager.dashboard'
 ]).
 config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
-    when('/list-task', {
-        templateUrl: 'app/partials/mind-mapper.html', controller: 'DashboardController', resolve: {
-            taskList: function (MindmapperService) {                
-                var taskList = MindmapperService.getAllTask();
+    when('/home', {
+        templateUrl: 'partials/home.html', controller: 'newtaskandlistcontroller' /*, resolve: {
+            taskList: function (TaskManagerService) {
+                var taskList = TaskManagerService.getAllTasks();
                 return taskList;
-            }
-        }
+            }           
+        } */
     }).
     when('/add-task', {
-        templateUrl: 'app/partials/add-edit-task.html', controller: 'MindmapperController', resolve: {
+        templateUrl: 'partials/add-edit-task.html', controller: 'TaskEditorController', resolve: {
             task: function () {
-                return new Task();
+                return new Task();  // return an empty task object to be populated
             }
         }
     }).
-  when('/edit-task/:taskId', {
-      templateUrl: 'app/partials/add-edit-task.html', controller: 'MindmapperController', resolve: {
-          task: function (MindmapperService, $route) {
-              return MindmapperService.getTask($route.current.params.taskId);
-          }
-      }
-  }).
+    when('/edit-task/:taskId', {
+        templateUrl: 'partials/add-edit-task.html', controller: 'TaskEditorController', resolve: {
+            task: function (TaskManagerService, $route) {
+                return TaskManagerService.getTask($route.current.params.taskId);
+            }
+        }
+    }).
     when('/schedule-task/:taskId', {
-        templateUrl: 'app/partials/add-edit-schedule.html', controller: 'SchedularController', resolve: {
-            task: function (MindmapperService, $route) {
-                return MindmapperService.getTask($route.current.params.taskId);
+        templateUrl: 'partials/add-edit-schedule.html', controller: 'SchedularController', resolve: {
+            task: function (TaskManagerService, $route) {
+                return TaskManagerService.getTask($route.current.params.taskId);
+            }
+        }
+    }).
+    when('/schedule-task/:taskId/:childTaskId', {
+        templateUrl: 'partials/add-edit-schedule.html', controller: 'SchedularController', resolve: {
+            task: function (TaskManagerService, $route) {
+                return TaskManagerService.getTask($route.current.params.taskId);
             }
         }
     }).
     when('/createChild-task/:taskId', {
-        templateUrl: 'app/partials/add-child-task.html', controller: 'ChildTaskController', resolve: {
-            task: function (MindmapperService, $route) {
-                return MindmapperService.getTask($route.current.params.taskId);
+        templateUrl: 'partials/add-child-task.html', controller: 'TaskEditorController', resolve: {
+            task: function (TaskManagerService, $route) {
+                return TaskManagerService.getTask($route.current.params.taskId);
             }
         }
     }).
     when('/today-todo', {
-        templateUrl: 'app/partials/myTodayToDo.html', controller: 'ToDoController', resolve: {
-            todoList: function (MindmapperService) {
-                var todoList = MindmapperService.getTodayTask();
+        templateUrl: 'partials/my-to-do.html', controller: 'ToDoController', resolve: {
+            todoList: function (TaskManagerService) {
+                var todoList = TaskManagerService.getTodayTasks();
                 return todoList;
             }
         }
     }).
+    when('/create-user', {
+        templateUrl: 'partials/create-user.html', controller: 'SecurityController'
+    }).
+    when('/login', {
+        templateUrl: 'partials/login.html', controller: 'SecurityController'
+    }).
+    when('/create-category', {
+        templateUrl: 'partials/create-category.html', controller: 'CategoryController'
+    }).
+    when('/categorize-task', {
+        templateUrl: 'partials/categorize-task.html', controller: 'CategoryController'
+    }).
+    when('/organized-view/:categoryId', {
+        templateUrl: 'partials/organized-tasks.html', controller: 'CategoryController'
+    }).
+         when('/about', {
+             templateUrl: 'partials/about-us.html'
+         }).
     otherwise({
-        redirectTo: '/list-task'
+        redirectTo: '/login'
     });
 }]);

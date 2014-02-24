@@ -1,17 +1,17 @@
-﻿<div class="container">
+﻿<div class="container-fluid">
     <form role="form">
-        <span ng-bind="model.id" />
+        <h4>Setting schedule for task: <span ng-bind="model.title" /></h4>
         <div class="form-group">
-            <label>Select Start Date</label>
-            <input class="form-control" type="date" ng-model="schedule.start" /><br />
+            <h6>Select Start Date</h6>
+            <input class="form-control" type="date" ng-model="schedule.start" blur="submitToggle" />
         </div>
         <div class="form-group">
-            <label>Select End Date</label>
-            <input class="form-control" type="date" ng-model="schedule.end" /><br />
+            <h6>Select End Date</h6>
+            <input class="form-control" type="date" ng-model="schedule.end" blur="submitToggle" />
         </div>
         <div class="form-group">
-            <label>Select Reminder Date</label>
-            <input class="form-control" type="date" ng-model="schedule.reminder" /><br />
+            <h6>Select Reminder Date</h6>
+            <input class="form-control" type="date" ng-model="schedule.reminder" blur="submitToggle" />
         </div>
         <button class="btn btn-primary" type="submit" ng-click="scheduleTask(model.id, schedule)">Submit</button>
     </form>

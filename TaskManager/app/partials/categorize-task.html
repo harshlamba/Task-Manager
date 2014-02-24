@@ -1,0 +1,55 @@
+﻿﻿<div class="col-lg-12" ng-init="getTaskAndCategoryList();">
+    <h3>Categorize Tasks</h3>
+    <!--<div class="list-group" ng-repeat="task in taskList">
+         task list organised
+        <div class="task-wrapper row">
+            <a class="list-group-item task task-categorize col-sm-5" ng-bind="task.title"></a>
+            <span class="categorize-obj-title col-sm-3" ng-bind="categoryObjects[task.categoryId].title"></span>
+            <select class="categorize-obj-select col-sm-3" ng-model="selectedCategory" ng-options="cat.id as cat.title for cat in categoryList" ng-change="categorySelected();"></select>
+            <a class="icon-categorize-submit col-sm-1" ng-click="setCategoryTaskBinding(task.id, currentCategory.id);"><span class="glyphicon glyphicon-ok-circle"></span></a>
+        </div>
+    </div>-->
+    <div>
+        <div class="col-sm-12 form-horizontal">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label">Select desired category</label>
+                <div class="col-sm-8">
+                    <select id="inputEmail3" class="categorize-obj-select" ng-model="selectedCategory" ng-options="cat.id as cat.title for cat in categoryList" ng-change="categorySelected();"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Select tasks to add in category</label>
+                <div class="col-sm-8">
+                    <strong>{{currentCategory.title}}</strong>
+                </div>
+            </div>
+            <!--Select desired category<br />
+            <select ng-model="selectedCategory" ng-options="cat.id as cat.title for cat in categoryList" ng-change="categorySelected();"></select>-->
+        </div>
+        <div>
+            <!--Select tasks to add in category [{{currentCategory.title}}] <br />-->
+
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <td>Title </td>
+                    <td>Description</td>
+                    <td>Existing Category</td>
+                    <td>Set Selected Category</td>
+                </tr>
+
+                <tr ng-repeat="task in taskList">
+
+                    <td ng-bind="task.title"></td>
+                    <td ng-bind="task.description"></td>
+                    <td ng-bind="categoryObjects[task.categoryId].title"></td>
+                    <td>
+                        <button class="btn btn-primary" type="submit" ng-click="setCategoryTaskBinding(task.id, currentCategory.id);">
+                            Set Category
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+

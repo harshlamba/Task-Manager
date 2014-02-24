@@ -1,0 +1,32 @@
+﻿﻿<h3>Tasks in category {{selectedCategoryTitle}}</h3>
+<div class="container-fluid" ng-init="getTaskAndCategoryList();">
+    <div class="list-group" ng-repeat="task in taskList" ng-if="((task.categoryId==selectedCategoryId) && (task.start=='0'))">
+        <!-- task list unorganised-->
+        <div class="task-wrapper">
+            <a class="list-group-item task" data-toggle="modal" data-target="#myModal" ng-bind="task.title"></a>
+            <a class="icon-font" ng-href="#/edit-task/{{task.id}}"><span class="glyphicon glyphicon-pencil "></span></a>
+            <a class="icon-font" ng-href="#/schedule-task/{{task.id}}"><span class="glyphicon glyphicon-calendar"></span></a>
+            <span class="label label-warning">Unscheduled</span>
+        </div>
+    </div>
+
+    <div class="list-group" ng-repeat="task in taskList" ng-if="((task.categoryId==selectedCategoryId) && (task.start!='0'))">
+        <!-- task list organised-->
+        <div class="task-wrapper">
+            <a class="list-group-item task task-organise" ng-bind="task.title"></a>
+            <a class="icon-font" ng-href="#/createChild-task/{{task.id}}"><span class="glyphicon glyphicon-plus-sign"></span></a>
+            <a class="icon-font" ng-href="#/edit-task/{{task.id}}"><span class="glyphicon glyphicon-pencil icon-font"></span></a>
+            <a class="icon-font" ng-href="#/schedule-task/{{task.id}}"><span class="glyphicon glyphicon-calendar"></span></a>
+            <span class="label label-success">Scheduled</span>
+        </div>
+        <!-- child repeater -->
+        <div class="" ng-repeat="child in task.childTask">
+            <div class="task-wrapper-child">
+                <a class="list-group-item task " ng-bind="child.title"></a>
+                <a class="icon-font" style="visibility:hidden" ng-href="#/edit-task/{{child.parentTaskId}}/{{child.taskId}}"><span class="glyphicon glyphicon-pencil icon-font"></span></a>
+                <a class="icon-font" ng-href="#/schedule-task/{{child.parentTaskId}}/{{child.taskId}}"><span class="glyphicon glyphicon-calendar"></span></a>
+                <span class="label label-success">Scheduled</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,96 +1,87 @@
-﻿<!doctype html>
+﻿<!DOCTYPE html>
 <html lang="en" ng-app="taskManager">
 <head>
-    <meta charset="utf-8">
-    <title>Task Manager</title>
-    <link rel="stylesheet" href="app/css/app.css"/>
+    <title>Personal Task Manager</title>
+    <!--<link href="app/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="css/app.css" />
 </head>
 <body>
+    <div class="container-fluid">
+        <div class="row margin-left">
+            <!--  Side bar -->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation" ng-controller="CategoryController" ng-init="getTaskAndCategoryList();">
+                <h2>Task Manager</h2>
 
-    <header>
-        <nav class="navbar navbar-default navbar-static-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">TaskManager</a>
+                <div class="list-group" ng-repeat="cat in categoryList">
+                    <a href="#/organized-view/{{cat.id}}" class="list-group-item">{{cat.title}}</a>
                 </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li><a href="#/today-todo">My Today ToDo</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Task <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#/add-task">Add Task</a></li>
-                                <li><a href="#/list-task">List Task</a></li>                               
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Scheduler<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#/schedule-task">Schedule Task</a></li>                                
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li class="dropdown-header">Nav header</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!--/.nav-collapse -->
+                <a href="#/create-category" class="list-group-item button"><span class="glyphicon glyphicon-plus"></span> Add New Category </a>
             </div>
-        </nav>
-    </header>
-
-    <section ng-view></section>
-
-    <footer class="container">
-        <h6>Taskmanager &copy; 2014</h6>
+            <!-- Side bar-->
+            <!-- Right Section -->
+            <div class="col-xs-12 col-sm-9">
+                <nav>
+                    <!-- Here goes the left side task manager -->
+                    <header>
+                        <nav class="navbar navbar-inverse" role="navigation">
+                            <div class="container-fluid">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="#"></a>
+                                </div>
+                                <div class="navbar-collapse collapse">
+                                    <ul class="nav navbar-nav navbar-left">
+                                        <li><a href="#/home">Home</a></li>
+                                        <li><a href="#/categorize-task">Categorize Tasks</a></li>
+                                        <li><a href="#/today-todo">My Today Tasks</a></li>
+                                        <li><a href="#/about">About</a></li>
+                                    </ul>
+                                </div><!--/.nav-collapse -->
+                            </div>
+                        </nav>
+                    </header>
+                </nav>
+                <section ng-view></section>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <h6>Personal Task Manager &copy; 2014</h6>
     </footer>
 
-    <!-- In production use:
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-    -->
+    <!-- 1st load the library files-->
     <script src="lib/jquery/jquery.min.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="app/lib/angular/angular.js"></script>
-    <script src="app/lib/angular/angular-route.js"></script>
-
-    <script src="app/lib/firebase/firebase.js"></script>
-    <script src="app/lib/firebase/firebase-simple-login.js"></script>
-    <script src="app/lib/firebase/angularfire.js"></script>
-    <!-- In production use:
-    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
-    <script src="https://cdn.firebase.com/v0/firebase-simple-login.js"></script>
-    <script src="https://cdn.firebase.com/libs/angularfire/0.6.0/angularfire.js"></script>
-        -->
-    <script src="lib/angular-bootstrap/ui-bootstrap.min.js"></script>
-    <script src="lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <script src="app/js/utils/GUIDGenerator.js"></script>
-    <script src="app/js/app.js"></script>
-    <script src="app/js/module/dashboard.js"></script>
-    <script src="app/js/services/MindmapperService.js"></script>
-    <script src="app/js/services/ScheduleService.js"></script>
-    <script src="app/js/services/ChildTaskService.js"></script>
-    <script src="app/js/controllers/dashboardController.js"></script>
-    <script src="app/js/controllers/schedularController.js"></script>    
-    <script src="app/js/controllers/childTaskController.js"></script>
-    <script src="app/js/controllers/todoController.js"></script>
-    <script src="app/js/services/TodoService.js"></script>
-    <script src="app/js/model/task.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular/angular-route.min.js"></script>
+    <script src="lib/firebase/firebase.js"></script>
+    <script src="lib/firebase-simple-login/firebase-simple-login.js"></script>
+    <script src="lib/angularfire/angularfire.min.js"></script>
+    <!-- then load the application -->
+    <script src="js/app.js"></script>
+    <!-- model -->
+    <script src="js/model/task.js"></script>
+    <!-- modules -->
+    <script src="js/modules/dashboard.js"></script>
+    <!-- utils -->
+    <script src="js/utils/guidGenerator.js"></script>
+    <!-- services -->
+    <script src="js/services/securityService.js"></script>
+    <script src="js/services/categoryService.js"></script>
+    <script src="js/services/taskManagerService.js"></script>
+    <!-- controllers -->
+    <script src="js/controllers/newtaskandlistcontroller.js"></script>
+    <script src="js/controllers/schedularController.js"></script>
+    <script src="js/controllers/taskEditorController.js"></script>
+    <script src="js/controllers/todoController.js"></script>
+    <script src="js/controllers/securityController.js"></script>
+    <script src="js/controllers/categoryController.js"></script>
+    <script src="js/directive/ng-enter.js"></script>
+    <script src="js/directive/blur.js"></script>
 </body>
 </html>

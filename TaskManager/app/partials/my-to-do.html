@@ -1,0 +1,41 @@
+﻿<div class="container-fluid">
+    <div class="list-group" ng-repeat="task in todoList">
+        <!-- task list unorganised-->
+        <div class="task-wrapper">
+            <a class="list-group-item task to-do-list" data-toggle="modal" data-target="#myModal" ng-bind="task.title"></a>
+            <a class="icon-font" ><span class="glyphicon glyphicon-calendar"></span></a>
+            <a class="icon-date" ng-bind="task.start"><span class="glyphicon glyphicon-calendar"></span></a>
+            <a class="icon-font" ><span class="glyphicon glyphicon-calendar"></span></a>
+            <a class="icon-date" ng-bind="task.end"><span class="glyphicon glyphicon-calendar"></span></a>
+            
+        </div>
+    </div>
+</div>
+
+<!-- Code to deleted -->
+<div class="container" style="display:none">
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <h1>My Today ToDo</h1>
+            <div>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <td>Title </td>
+                        <td>Description</td>
+                        <td>Start Date</td>
+                        <td>End Date</td>
+                    </tr>
+
+                    <tr ng-repeat="task in todoList">
+                        <td ng-bind="task.title"></td>
+                        <td ng-bind="task.description"></td>
+                        <td ng-bind="task.start"></td>
+                        <td ng-bind="task.end"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>

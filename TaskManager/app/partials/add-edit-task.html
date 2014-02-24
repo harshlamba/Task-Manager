@@ -1,12 +1,14 @@
-<div class="container">
-    <form role="form">
+﻿<div class="container-fluid">
+    ﻿<form role="form">
+        <h4>
+            <span ng-show="((model.id != undefined) || (model.id != null))">Update Existing</span>
+            <span ng-show="((model.id == undefined) || (model.id == null))">Add New</span> Task
+        </h4>
         <div class="form-group">
-            <label>Enter Title</label>
-            <input class="form-control" id="txtTitle" type="text" ng-model="model.title" /><br />
+            <input class="form-control" id="txtTitle" type="text" placeholder="Enter Title" ng-model="model.title" blur="submitToggle" />
         </div>
         <div class="form-group">
-            <label>Enter Description</label>
-            <input class="form-control" id="txtDesc" type="text" ng-model="model.description" /><br />
+            <input class="form-control" id="txtDesc" type="text" placeholder="Enter Description" ng-model="model.description" blur="submitToggle" />
         </div>
         <button class="btn btn-primary" type="submit" ng-click="onAddButtonClick(model)">Submit</button>
     </form>
